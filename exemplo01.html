@@ -15,12 +15,7 @@
     <br>
     <input type="submit"/>
     <input type="reset"/>
-
-
 </form>
-
-
-
 
     <table border = 1>
         <thead>
@@ -64,7 +59,8 @@
             var idade = Number(formCadastro.idade.value);
             var cidade = formCadastro.cidade.value;
             jogaLinhaNaTabela(nome, idade, cidade)
-            
+            formCadastro.reset();
+            formCadastro.nome.focus();
         }
 
         function jogaLinhaNaTabela(nome, idade, cidade)
@@ -80,8 +76,7 @@
             trLinha.appendChild(tdIdade);
             trLinha.appendChild(tdCidade);
             corpoTabela.appendChild(trLinha);
-            formCadastro.reset();
-            formCadastro.nome.focus();
+
         }
     
     </script>
