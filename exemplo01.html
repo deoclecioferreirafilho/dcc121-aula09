@@ -9,9 +9,10 @@
 
 <body>
 <form name= "cadastro">
-    <div><label>Nome: <input type="text" name="nome"/></label></div>
-    <div><label>Idade: <input type="number" name="idade"/></label></div>
+    <div><label>Nome:   <input type="text" name="nome"/></label></div>
+    <div><label>Idade:  <input type="number" name="idade"/></label></div>
     <div><label>Cidade: <input type="text" name="cidade"/></label></div>
+    <br>
     <input type="submit"/>
     <input type="reset"/>
 
@@ -51,16 +52,36 @@
 
 
     <script>
-        var formCadastro = document.form.cadastro;
-
+        var formCadastro = document.forms.cadastro;
         formCadastro.addEventListener("submit", processaCadastro);
+        var corpoTabela = document.querySelector("tbody");
+
 
         function processaCadastro(e)
         {
-            e.preventDefaut();
+            e.preventDefault();
             var nome = formCadastro.nome.value;
             var idade = Number(formCadastro.idade.value);
             var cidade = formCadastro.cidade.value;
+            jogaLinhaNaTabela(nome, idade, cidade)
+            
+        }
+
+        function jogaLinhaNaTabela(nome, idade, cidade)
+        {
+            var tdNome = document.createElement("td");
+            tdNome.textContent = nome;
+            var tdIdade = document.createElement("td");
+            tdIdade.textContent = idade;
+            var tdCidade = document.createElement("td");
+            tdCidade.textContent = cidade;
+            var trLinha = document.createElement("tr");
+            trLinha.appendChild(tdNome);
+            trLinha.appendChild(tdIdade);
+            trLinha.appendChild(tdCidade);
+            corpoTabela.appendChild(trLinha);
+            formCadastro.reset();
+            formCadastro.nome.focus();
         }
     
     </script>
